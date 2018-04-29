@@ -21,10 +21,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Nama database
-    private static final String DATABASE_NAME = "publikasi_api";
+    private static final String DATABASE_NAME = "db_publikasi";
 
     // Nama tabel Login
-    private static final String TABLE_USER = "user";
+    private static final String TABLE_USER = "tb_user";
 
     // Nama Kolom Tabel Login
     private static final String KEY_ID = "id";

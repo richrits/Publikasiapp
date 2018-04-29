@@ -11,4 +11,9 @@ public class AppConfig {
     //URL untuk server User register
     public static String URL_REGISTER = "http://192.168.43.64/publikasi_api/register.php";
 
+    //URL untuk server fetching json publikasi
+    public static String URL_PUBLIKASI = "http://192.168.43.64/publikasi_api/get_all_publikasi.php?id=";
+
+
+
 }

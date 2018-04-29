@@ -1,11 +1,18 @@
 package com.skripsi.android.publikasiapp.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,21 +20,23 @@ import android.widget.TextView;
 
 
 import com.skripsi.android.publikasiapp.R;
+import com.skripsi.android.publikasiapp.fragment.HomeFragment;
+import com.skripsi.android.publikasiapp.fragment.ProfileFragment;
+import com.skripsi.android.publikasiapp.fragment.SearchFragment;
 import com.skripsi.android.publikasiapp.helper.SQLiteHandler;
 import com.skripsi.android.publikasiapp.helper.SessionManager;
 
 import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "MainActivity";
     private ActionBar toolbar;
-    private TextView txtName;
-    private TextView txtEmail;
-    private Button btnLogout;
+
 
     private SQLiteHandler db;
     private SessionManager session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,81 +45,63 @@ public class MainActivity extends AppCompatActivity {
         toolbar = getSupportActionBar();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(this);
 
-        txtName = (TextView) findViewById(R.id.name);
-        txtEmail = (TextView) findViewById(R.id.email);
-        btnLogout = (Button) findViewById(R.id.btnLogout);
+        toolbar.setTitle("Publikasi");
+        loadFragment(HomeFragment.getInstance());
 
-        // SqLite database handler
-        db = new SQLiteHandler(getApplicationContext());
 
-        // session manager
-        session = new SessionManager(getApplicationContext());
+    }
 
-        if (!session.isLoggedIn()) {
-            logoutUser();
+    private void loadFragment(Fragment fragment) {
+        Log.d(TAG, "loadFragment: started");
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment;
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                Log.d(TAG, "onNavigationItemSelected: home");
+                toolbar.setTitle("Publikasi");
+                fragment = HomeFragment.getInstance();
+                loadFragment(fragment);
+                return true;
+            case R.id.navigation_search:
+                Log.d(TAG, "onNavigationItemSelected: search");
+                toolbar.setTitle("Cari");
+                fragment = SearchFragment.getInstance();
+                loadFragment(fragment);
+                return true;
+            case R.id.navigation_profile:
+                Log.d(TAG, "onNavigationItemSelected: profile");
+                toolbar.setTitle("Profil");
+                fragment = ProfileFragment.getInstance();
+                loadFragment(fragment);
+                return true;
         }
+        return false;
+    }
 
-        // Fetching user details from sqlite
-        HashMap<String, String> user = db.getUserDetails();
-
-        String name = user.get("name");
-        String email = user.get("email");
-
-        // Displaying the user details on the screen
-        txtName.setText(name);
-        txtEmail.setText(email);
-
-        // Logout button click event
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+    @Override
+    public void onBackPressed() {
+        Log.d(TAG, "onBackPressed: started");
+        new AlertDialog.Builder(this).setTitle("Keluar?").setMessage("Apakah anda ingin keluar dari aplikasi?").setNegativeButton(android.R.string.no,null).setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                logoutUser();
+            public void onClick(DialogInterface dialogInterface, int i) {
+                MainActivity.super.onBackPressed();
             }
-        });
-
+        }).create().show();
 
     }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    toolbar.setTitle("Beranda");
-                    return true;
-                case R.id.navigation_search:
-                    toolbar.setTitle("Search");
-                    return true;
-
-                case R.id.navigation_profile:
-                    toolbar.setTitle("Profile");
-                    return true;
-            }
-            return false;
-        }
-    };
-
-    /**
-     * Logging out the user. Will set isLoggedIn flag to false in shared
-     * preferences Clears the user data from sqlite users table
-     * */
-    private void logoutUser() {
-        session.setLogin(false);
-
-        db.deleteUsers();
-
-        // Launching the login activity
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-
-
 }
