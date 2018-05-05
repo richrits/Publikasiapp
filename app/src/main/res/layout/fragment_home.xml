@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/publikasi_list"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:textColor="@color/lbl_name"
             android:layout_margin="5dp"
             android:padding="5dp"/>

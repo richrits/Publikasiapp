@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/parent_layout">
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
@@ -33,11 +34,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/publikasi_cover_height"
                 android:background="@color/cardview_light_background"
-                android:clickable="true"
                 android:scaleType="fitXY"
-                android:layout_margin="3dp"/>
-
-
+                android:layout_margin="3dp"
+                android:focusable="true"/>
 
         </LinearLayout>
 

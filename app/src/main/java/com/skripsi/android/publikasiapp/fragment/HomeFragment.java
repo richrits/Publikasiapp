@@ -1,6 +1,7 @@
 package com.skripsi.android.publikasiapp.fragment;
 
 
+import android.app.ActionBar;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -149,6 +150,7 @@ public class HomeFragment extends Fragment {
         super.onPrepareOptionsMenu(menu);
         menu.findItem(R.id.action_settings).setVisible(false);
         menu.findItem(R.id.action_logout).setVisible(false);
+        menu.findItem(R.id.action_search).setVisible(false);
     }
 
 

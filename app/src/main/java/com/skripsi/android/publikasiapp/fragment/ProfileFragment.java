@@ -91,6 +91,7 @@ public class ProfileFragment extends Fragment {
         super.onPrepareOptionsMenu(menu);
         menu.findItem(R.id.action_settings).setVisible(true);
         menu.findItem(R.id.action_logout).setVisible(true);
+        menu.findItem(R.id.action_search).setVisible(false);
     }
 
     @Override

@@ -20,6 +20,15 @@
     <string name="action_logout">Log Out</string>
 
     <string name="publikasi_list">Daftar Publikasi</string>
+    <string name="publikasi_title">Judul Publikasi</string>
+    <string name="nomor_katalog">Nomor Katalog :  </string>
+    <string name="nomor_publikasi">Nomor Publikasi :  </string>
+    <string name="issn">ISSN/ISBN :  </string>
+    <string name="tanggal_rilis">Tanggal Rilis :  </string>
+    <string name="ukuran_file">Ukuran File :  </string>
+    <string name="abstract_publikasi">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra vulputate ligula, a egestas sem egestas ac. Proin mi metus, venenatis ac lacus in, laoreet molestie arcu. Donec lacinia arcu a posuere cursus. Sed ex mi, vehicula et eros vitae, vestibulum semper risus. Donec posuere erat a neque sagittis, sit amet sollicitudin arcu tristique. Etiam dapibus felis vel augue pretium, eget efficitur turpis elementum. Sed id ligula a est mollis lacinia sed ut orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas laoreet fringilla mi, vel pellentesque odio feugiat ut. Cras vel interdum lectus. Sed porta ligula sed sagittis vestibulum. Nullam tincidunt arcu ut risus facilisis eleifend. Phasellus ut lacus non turpis rhoncus varius a eget risus. Morbi ut tempor ligula, sed accumsan massa. \n
+
+    Suspendisse semper lacus convallis massa suscipit, ut commodo ex sollicitudin. Suspendisse vitae turpis in urna venenatis faucibus in in ante. Duis facilisis nulla nec arcu maximus, vel sollicitudin urna ultricies. Proin enim ligula, pharetra in egestas eu, facilisis non quam. Vestibulum a ante sit amet ipsum convallis condimentum eu sed est. In rutrum tortor urna, et auctor arcu mollis at. Fusce imperdiet, dolor a placerat tincidunt, lectus ipsum tincidunt libero, sed aliquam felis sapien quis justo. Nulla facilisi. Pellentesque vel tempor lorem. Curabitur non laoreet eros. Curabitur eget leo et velit elementum tristique. Fusce eu volutpat purus. Etiam sit amet arcu a felis efficitur mollis nec id erat. Donec convallis dolor ac purus lacinia imperdiet. In pretium elit eget venenatis interdum.</string>
 
 
     <string name="hello_blank_fragment">Hi</string>
@@ -37,5 +46,6 @@
     <string name="app_version">versi 1.x.x</string>
     <string name="title_version">Version</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="action_search">Search</string>
+    <string name="search_hint">Type name…</string>
 </resources>
