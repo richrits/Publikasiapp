@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.Request.Method;
@@ -40,7 +42,11 @@ public class RegisterActivity extends Activity{
     private Button btnLinkToLogin;
     private EditText inputFullName;
     private EditText inputEmail;
+    private Spinner inputPekerjaan;
+    private Spinner inputPendidikanTerakhir;
     private EditText inputPassword;
+    private ArrayAdapter<CharSequence> adapterPekerjaan;
+    private ArrayAdapter<CharSequence> adapterPTerakhir;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
@@ -55,6 +61,16 @@ public class RegisterActivity extends Activity{
         inputPassword = (EditText) findViewById(R.id.password);
         btnRegister = (Button) findViewById(R.id.btnRegister);
         btnLinkToLogin = (Button) findViewById(R.id.btnLinkToLoginScreen);
+        inputPekerjaan = (Spinner)findViewById(R.id.pekerjaan);
+        inputPendidikanTerakhir = (Spinner)findViewById(R.id.pendidikan_terakhir);
+        adapterPekerjaan = ArrayAdapter.createFromResource(this,R.array.pekerjaan, android.R.layout.simple_spinner_item);
+        adapterPekerjaan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterPTerakhir = ArrayAdapter.createFromResource(this,R.array.pendidikan_terakhir, android.R.layout.simple_spinner_item);
+        adapterPTerakhir.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        inputPekerjaan.setAdapter(adapterPekerjaan);
+        inputPendidikanTerakhir.setAdapter(adapterPTerakhir);
+
 
         // Progress dialog
         pDialog = new ProgressDialog(this);
@@ -81,9 +97,13 @@ public class RegisterActivity extends Activity{
                 String name = inputFullName.getText().toString().trim();
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
+                String pekerjaan = inputPekerjaan.getSelectedItem().toString();
+                String pendidikan_terakhir = inputPendidikanTerakhir.getSelectedItem().toString();
 
-                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
-                    registerUser(name, email, password);
+
+                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !pekerjaan.isEmpty() && !pendidikan_terakhir.isEmpty()) {
+                    Log.d(TAG, "onClick: register");
+                    registerUser(name, email, password, pekerjaan, pendidikan_terakhir);
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Please enter your details!", Toast.LENGTH_LONG)
@@ -110,10 +130,9 @@ public class RegisterActivity extends Activity{
      * email, password) to register url
      * */
     private void registerUser(final String name, final String email,
-                              final String password) {
+                              final String password, final String pekerjaan, final String pendidikan_terakhir) {
         // Tag used to cancel the request
         String tag_string_req = "req_register";
-
         pDialog.setMessage("Registering ...");
         showDialog();
 
@@ -138,9 +157,11 @@ public class RegisterActivity extends Activity{
                         String email = user.getString("email");
                         String created_at = user
                                 .getString("created_at");
+                        String pekerjaan = user.getString("pekerjaan");
+                        String pendidikan_terakhir = user.getString("pendidikan_terakhir");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email, uid, created_at, pekerjaan, pendidikan_terakhir);
 
                         Toast.makeText(getApplicationContext(), "User successfully registered. Try login now!", Toast.LENGTH_LONG).show();
 
@@ -180,6 +201,8 @@ public class RegisterActivity extends Activity{
                 params.put("name", name);
                 params.put("email", email);
                 params.put("password", password);
+                params.put("pekerjaan", pekerjaan);
+                params.put("pendidikan_terakhir", pendidikan_terakhir);
 
                 return params;
             }

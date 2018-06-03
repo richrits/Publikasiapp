@@ -4,10 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.SearchFragment">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/ekofilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:padding="15dp"
+            android:text="EKONOMI" />
+
+        <TextView
+            android:id="@+id/sosfilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:padding="15dp"
+            android:text="SOSIAL" />
+
+        <TextView
+            android:id="@+id/tanifilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:padding="15dp"
+            android:text="PERTANIAN" />
+        <TextView
+            android:id="@+id/ikanfilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:padding="15dp"
+            android:text="PERIKANAN" />
+        <TextView
+            android:id="@+id/pendudukfilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:padding="15dp"
+            android:text="KEPENDUDUKAN" />
+
+    </LinearLayout>
 </FrameLayout>

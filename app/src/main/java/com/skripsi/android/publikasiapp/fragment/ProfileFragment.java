@@ -30,7 +30,6 @@ public class ProfileFragment extends Fragment {
     private static final String TAG = "ProfileFragment";
     private TextView txtName;
     private TextView txtEmail;
-    private Button btnLogout;
     private static ProfileFragment INSTANCE = null;
     private SQLiteHandler db;
     private SessionManager session;
@@ -64,15 +63,16 @@ public class ProfileFragment extends Fragment {
         // session manager
         session = new SessionManager(getActivity().getApplicationContext());
 
-//        if (!session.isLoggedIn()) {
-//            logoutUser();
-//        }
+        if (!session.isLoggedIn()) {
+            logoutUser();
+        }
 
         // Fetching user details from sqlite
         HashMap<String, String> user = db.getUserDetails();
 
         String name = user.get("name");
         String email = user.get("email");
+        String uid = user.get("uid");
 
         // Displaying the user details on the screen
         txtName.setText(name);

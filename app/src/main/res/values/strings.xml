@@ -3,6 +3,24 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Fullname</string>
+    <string name="hint_pekerjaan">Pekerjaan</string>
+    <string name="hint_pendidikan_terakhir">Pendidikan Terakhir</string>
+    <string-array name="pekerjaan">
+        <item>Aparatur Sipil Negara</item>
+        <item>Karyawan Swasta</item>
+        <item>Wiraswasta</item>
+        <item>Peneliti</item>
+        <item>Pelajar/Mahasiswa</item>
+        <item>Lainnya</item>
+    </string-array>
+    <string-array name="pendidikan_terakhir">
+        <item>SMA sederajat</item>
+        <item>Diploma (D1/D2/D3)</item>
+        <item>S1</item>
+        <item>S2</item>
+        <item>S3</item>
+    </string-array>
+
     <string name="btn_login">LOGIN</string>
     <string name="btn_register">REGISTER</string>
     <string name="btn_link_to_register">Belum terdaftar? Daftar sekarang!.</string>
@@ -26,9 +44,7 @@
     <string name="issn">ISSN/ISBN :  </string>
     <string name="tanggal_rilis">Tanggal Rilis :  </string>
     <string name="ukuran_file">Ukuran File :  </string>
-    <string name="abstract_publikasi">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra vulputate ligula, a egestas sem egestas ac. Proin mi metus, venenatis ac lacus in, laoreet molestie arcu. Donec lacinia arcu a posuere cursus. Sed ex mi, vehicula et eros vitae, vestibulum semper risus. Donec posuere erat a neque sagittis, sit amet sollicitudin arcu tristique. Etiam dapibus felis vel augue pretium, eget efficitur turpis elementum. Sed id ligula a est mollis lacinia sed ut orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas laoreet fringilla mi, vel pellentesque odio feugiat ut. Cras vel interdum lectus. Sed porta ligula sed sagittis vestibulum. Nullam tincidunt arcu ut risus facilisis eleifend. Phasellus ut lacus non turpis rhoncus varius a eget risus. Morbi ut tempor ligula, sed accumsan massa. \n
-
-    Suspendisse semper lacus convallis massa suscipit, ut commodo ex sollicitudin. Suspendisse vitae turpis in urna venenatis faucibus in in ante. Duis facilisis nulla nec arcu maximus, vel sollicitudin urna ultricies. Proin enim ligula, pharetra in egestas eu, facilisis non quam. Vestibulum a ante sit amet ipsum convallis condimentum eu sed est. In rutrum tortor urna, et auctor arcu mollis at. Fusce imperdiet, dolor a placerat tincidunt, lectus ipsum tincidunt libero, sed aliquam felis sapien quis justo. Nulla facilisi. Pellentesque vel tempor lorem. Curabitur non laoreet eros. Curabitur eget leo et velit elementum tristique. Fusce eu volutpat purus. Etiam sit amet arcu a felis efficitur mollis nec id erat. Donec convallis dolor ac purus lacinia imperdiet. In pretium elit eget venenatis interdum.</string>
+    <string name="abstract_publikasi">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra vulputate ligula, a egestas sem egestas ac. Proin mi metus, venenatis ac lacus in, laoreet molestie arcu. Donec lacinia arcu a posuere cursus. Sed ex mi, vehicula et eros vitae, vestibulum semper risus. Donec posuere erat a neque sagittis, sit amet sollicitudin arcu tristique. Etiam dapibus felis vel augue pretium, eget efficitur turpis elementum. Sed id ligula a est mollis lacinia sed ut orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas laoreet fringilla mi, vel pellentesque odio feugiat ut. Cras vel interdum lectus. Sed porta ligula sed sagittis vestibulum. Nullam tincidunt arcu ut risus facilisis eleifend. Phasellus ut lacus non turpis rhoncus varius a eget risus. Morbi ut tempor ligula, sed accumsan massa. Suspendisse semper lacus convallis massa suscipit, ut commodo ex sollicitudin. Suspendisse vitae turpis in urna venenatis faucibus in in ante. Duis facilisis nulla nec arcu maximus, vel sollicitudin urna ultricies. Proin enim ligula, pharetra in egestas eu, facilisis non quam. Vestibulum a ante sit amet ipsum convallis condimentum eu sed est. In rutrum tortor urna, et auctor arcu mollis at. Fusce imperdiet, dolor a placerat tincidunt, lectus ipsum tincidunt libero, sed aliquam felis sapien quis justo. Nulla facilisi. Pellentesque vel tempor lorem. Curabitur non laoreet eros. Curabitur eget leo et velit elementum tristique. Fusce eu volutpat purus. Etiam sit amet arcu a felis efficitur mollis nec id erat. Donec convallis dolor ac purus lacinia imperdiet. In pretium elit eget venenatis interdum.</string>
 
 
     <string name="hello_blank_fragment">Hi</string>

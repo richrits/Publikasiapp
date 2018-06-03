@@ -4,28 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
-    <LinearLayout
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/publikasi_list"
-            android:textSize="17sp"
-            android:textColor="@color/lbl_name"
-            android:layout_margin="5dp"
-            android:padding="5dp"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_1"
+        android:id="@+id/swipe_refresh">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:scrollbars="vertical">
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/publikasi_list"
+                android:textSize="17sp"
+                android:textColor="@color/lbl_name"
+                android:layout_margin="5dp"
+                android:padding="5dp"/>
 
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:scrollbars="vertical">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </FrameLayout>

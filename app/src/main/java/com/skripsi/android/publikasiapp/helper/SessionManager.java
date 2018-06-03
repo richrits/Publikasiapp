@@ -8,7 +8,6 @@ import android.util.Log;
 /**
  * Created by Harits on 2/25/2018.
  */
-
 public class SessionManager {
     // LogCat tag
     private static String TAG = SessionManager.class.getSimpleName();

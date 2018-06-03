@@ -87,7 +87,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_person_outline_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/file/ic_file_download_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -97,7 +97,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_person_outline_black_24dp" />
+                            <entry key="color" value="1fffed" />
+                            <entry key="outputName" value="ic_file_download_green_24dp" />
                             <entry key="sourceFile" value="C:\Users\Harits" />
                           </map>
                         </option>

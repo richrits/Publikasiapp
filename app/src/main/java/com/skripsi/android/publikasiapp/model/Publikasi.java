@@ -9,12 +9,14 @@ public class Publikasi {
     private String _abstract;
     private String sch_date;
     private String rl_date;
-    private String updt_date;
     private String cover;
     private String pdf;
     private String size;
 
-    public Publikasi(int pub_id, String title, String kat_no, String pub_no, String issn, String _abstract, String sch_date, String rl_date, String updt_date, String cover, String pdf, String size) {
+    public Publikasi() {
+    }
+
+    public Publikasi(int pub_id, String title, String kat_no, String pub_no, String issn, String _abstract, String sch_date, String rl_date, String cover, String pdf, String size) {
         this.pub_id = pub_id;
         this.title = title;
         this.kat_no = kat_no;
@@ -23,7 +25,6 @@ public class Publikasi {
         this._abstract = _abstract;
         this.sch_date = sch_date;
         this.rl_date = rl_date;
-        this.updt_date = updt_date;
         this.cover = cover;
         this.pdf = pdf;
         this.size = size;
@@ -91,14 +92,6 @@ public class Publikasi {
 
     public void setRl_date(String rl_date) {
         this.rl_date = rl_date;
-    }
-
-    public String getUpdt_date() {
-        return updt_date;
-    }
-
-    public void setUpdt_date(String updt_date) {
-        this.updt_date = updt_date;
     }
 
     public String getCover() {

@@ -141,9 +141,11 @@ public class LoginActivity extends Activity{
                         String email = user.getString("email");
                         String created_at = user
                                 .getString("created_at");
+                        String pekerjaan = user.getString("pekerjaan");
+                        String pendidikan_terakhir = user.getString("pendidikan_terakhir");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email, uid, created_at,pekerjaan,pendidikan_terakhir);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,
