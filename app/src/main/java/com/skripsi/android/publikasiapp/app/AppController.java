@@ -17,6 +17,7 @@ public class AppController extends Application{
     private RequestQueue mRequestQueue;
 
     private static AppController mInstance;
+    private String currentTitle;
 
     @Override
     public void onCreate() {
@@ -50,5 +51,13 @@ public class AppController extends Application{
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+
+    public String getCurrentTitle() {
+        return currentTitle;
+    }
+
+    public void setCurrentTitle(String currentTitle) {
+        this.currentTitle = currentTitle;
     }
 }

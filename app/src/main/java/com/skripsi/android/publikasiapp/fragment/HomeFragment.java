@@ -21,6 +21,7 @@ import com.skripsi.android.publikasiapp.R;
 import com.skripsi.android.publikasiapp.app.AppConfig;
 import com.skripsi.android.publikasiapp.app.AppController;
 import com.skripsi.android.publikasiapp.adapters.ListPublikasiAdapter;
+import com.skripsi.android.publikasiapp.helper.SQLiteHandler;
 import com.skripsi.android.publikasiapp.model.Publikasi;
 
 import org.json.JSONArray;
@@ -44,7 +45,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private ListPublikasiAdapter adapter;
     private List<Publikasi> publikasiList;
     private SwipeRefreshLayout swipe;
-
+    private SQLiteHandler db;
 
 
     public HomeFragment() {
@@ -136,6 +137,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                 obj.getString("size"));
 
                         publikasiList.add(data);
+//                        db.addPublikasi(data);
 
                     } catch (JSONException e) {
                         System.out.println("End of content");

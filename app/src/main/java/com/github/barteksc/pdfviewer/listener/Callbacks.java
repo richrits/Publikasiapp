@@ -15,6 +15,7 @@
  */
 package com.github.barteksc.pdfviewer.listener;
 
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 import com.github.barteksc.pdfviewer.link.LinkHandler;
@@ -68,6 +69,16 @@ public class Callbacks {
      * Call back object to call when clicking link
      */
     private LinkHandler linkHandler;
+
+    public GestureDetector.OnDoubleTapListener getOnDoubleTapListener() {
+        return onDoubleTapListener;
+    }
+
+    public void setOnDoubleTapListener(GestureDetector.OnDoubleTapListener onDoubleTapListener) {
+        this.onDoubleTapListener = onDoubleTapListener;
+    }
+
+    private GestureDetector.OnDoubleTapListener onDoubleTapListener;
 
     public void setOnLoadComplete(OnLoadCompleteListener onLoadCompleteListener) {
         this.onLoadCompleteListener = onLoadCompleteListener;
@@ -152,7 +163,6 @@ public class Callbacks {
     public boolean callOnTap(MotionEvent event) {
         return onTapListener != null && onTapListener.onTap(event);
     }
-
     public void setLinkHandler(LinkHandler linkHandler) {
         this.linkHandler = linkHandler;
     }

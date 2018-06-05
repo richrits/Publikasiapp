@@ -15,18 +15,33 @@
  */
 package com.github.barteksc.pdfviewer;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.PointF;
 import android.graphics.RectF;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.github.barteksc.pdfviewer.model.LinkTapEvent;
 import com.github.barteksc.pdfviewer.scroll.ScrollHandle;
 import com.github.barteksc.pdfviewer.util.SnapEdge;
 import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.util.SizeF;
+import com.skripsi.android.publikasiapp.activity.MainActivity;
+import com.skripsi.android.publikasiapp.activity.ReaderActivity;
+import com.skripsi.android.publikasiapp.app.AppConfig;
+import com.skripsi.android.publikasiapp.app.AppController;
+import com.skripsi.android.publikasiapp.helper.SQLiteHandler;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.github.barteksc.pdfviewer.util.Constants.Pinch.MAXIMUM_ZOOM;
 import static com.github.barteksc.pdfviewer.util.Constants.Pinch.MINIMUM_ZOOM;
@@ -36,6 +51,11 @@ import static com.github.barteksc.pdfviewer.util.Constants.Pinch.MINIMUM_ZOOM;
  * set its zoom track user actions.
  */
 class DragPinchManager implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener, ScaleGestureDetector.OnScaleGestureListener, View.OnTouchListener {
+    private static final String TAG = "DragPinchManager";
+
+    private Context context;
+
+    private SQLiteHandler db;
 
     private PDFView pdfView;
     private AnimationManager animationManager;
@@ -270,6 +290,8 @@ class DragPinchManager implements GestureDetector.OnGestureListener, GestureDete
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
+
+
         pdfView.loadPages();
         hideHandle();
         scaling = false;
@@ -305,4 +327,47 @@ class DragPinchManager implements GestureDetector.OnGestureListener, GestureDete
         float absY = Math.abs(velocityY);
         return pdfView.isSwipeVertical() ? absY > absX : absX > absY;
     }
+
+    static class OnPinch extends ScaleGestureDetector.SimpleOnScaleGestureListener{
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+            Log.d("TAG", "pinch !");
+            return true;
+        }
+    }
+//    private void addActivityToServer(final String halaman, final String aktivitas){
+//
+//        // Fetching user details from sqlite
+//
+////
+////        final String email = this.getS
+////        final String title = sharedPreferences.getString("title","tidak ada judul");
+////        final String title = getIntent().getStringExtra("title");
+//        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, AppConfig.URL_ACTIVITY_USER, new com.android.volley.Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Log.d(TAG, "Berhasil menambahkan aktivitas: " + response.toString());
+//
+//            }
+//        }, new com.android.volley.Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.e(TAG, "gagal menambahkan aktivitas"+ error.getMessage());
+//            }
+//        }){
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("email",email);
+//                params.put("title",title);
+//                params.put("halaman",halaman);
+//                params.put("aktivitas",aktivitas);
+//
+//                return params;
+//            }
+//        };
+//
+//        AppController.getInstance().addToRequestQueue(stringRequest);
+//    }
+
 }

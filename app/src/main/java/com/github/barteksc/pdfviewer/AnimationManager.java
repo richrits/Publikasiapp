@@ -21,6 +21,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.OverScroller;
 
