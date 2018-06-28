@@ -1,4 +1,4 @@
-package com.skripsi.android.publikasiapp;
+package com.skripsi.android.publikasiapp.utils;
 
 import android.content.Context;
 import android.util.Log;
@@ -25,10 +25,11 @@ public class ActivityUtils {
         final String email = user.get("email");
 //        final String title = sharedPreferences.getString(PREF_TITLE,"tidak ada judul");
 //        final String title = getIntent().getStringExtra("title");
+
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, AppConfig.URL_ACTIVITY_USER, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Berhasil menambahkan aktivitas: " + response.toString());
+                Log.d(TAG, "Berhasil menambahkan aktivitas: " + response);
 
             }
         }, new com.android.volley.Response.ErrorListener() {

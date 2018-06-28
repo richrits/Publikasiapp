@@ -72,9 +72,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         //Recycler view variables
         rootView.setTag(TAG);
 
+        Publikasi publikasi;
 
-        swipe = (SwipeRefreshLayout)rootView.findViewById(R.id.swipe_refresh);
-        recyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view_1);
+        swipe = rootView.findViewById(R.id.swipe_refresh);
+        recyclerView = rootView.findViewById(R.id.recycler_view_1);
         publikasiList = new ArrayList<>();
 
 
@@ -83,23 +84,22 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         adapter = new ListPublikasiAdapter(getContext(),publikasiList);
         recyclerView.setAdapter(adapter);
-     //   callData(0);
-        swipe.setOnRefreshListener(this);
-        swipe.post(new Runnable() {
+        callData(0);
+      //  swipe.setOnRefreshListener(this);
+//        swipe.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                swipe.setRefreshing(true);
+//                callData(0);
+//
+//            }
+//        });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void run() {
-                swipe.setRefreshing(true);
-                callData();
-//                recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//                    @Override
-//                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                        if(gridLayoutManager.findLastCompletelyVisibleItemPosition()==publikasiList.size()-1){
-//                            callData(publikasiList.get(publikasiList.size()-1).getPub_id());
-//                        }
-//                    }
-//                });
-
-
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if(gridLayoutManager.findLastCompletelyVisibleItemPosition()==publikasiList.size()-1){
+                    callData(publikasiList.get(publikasiList.size()-1).getPub_id());
+                }
             }
         });
 
@@ -108,13 +108,13 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
 
-    private void callData() {
+    private void callData(int id) {
         Log.d(TAG, "load_data_from_server: started");
         adapter.notifyDataSetChanged();
         swipe.setRefreshing(true);
 
         //Creating volley request obj
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.URL_PUBLIKASI2, new com.android.volley.Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(AppConfig.URL_PUBLIKASI+id, new com.android.volley.Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.e(TAG, response.toString());
@@ -137,8 +137,13 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                                 obj.getString("size"));
 
                         publikasiList.add(data);
-//                        db.addPublikasi(data);
 
+
+//                        if(data!=null){
+//
+//                            db.addPublikasi(data.getTitle(),data.getKat_no(),data.getPub_no(),data.getIssn(),data.get_abstract(),data.getSch_date(),data.getRl_date(),data.getCover(),data.getPdf(),data.getSize());
+//
+//                        }
                     } catch (JSONException e) {
                         System.out.println("End of content");
                     }
@@ -165,7 +170,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public void onRefresh() {
         Log.d(TAG, "onRefresh: start");
         publikasiList.clear();
-        callData();
+  //      db.deletePublikasi();
+        callData(0);
     }
 
     @Override

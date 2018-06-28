@@ -64,8 +64,9 @@ import com.shockwave.pdfium.PdfDocument;
 import com.shockwave.pdfium.PdfiumCore;
 import com.shockwave.pdfium.util.Size;
 import com.shockwave.pdfium.util.SizeF;
-import com.skripsi.android.publikasiapp.ActivityUtils;
+import com.skripsi.android.publikasiapp.utils.ActivityUtils;
 import com.skripsi.android.publikasiapp.app.AppController;
+import com.skripsi.android.publikasiapp.helper.SQLiteHandler;
 
 import java.io.File;
 import java.io.InputStream;
@@ -94,6 +95,8 @@ import java.util.List;
 public class PDFView extends RelativeLayout {
 
     private static final String TAG = PDFView.class.getSimpleName();
+
+    private SQLiteHandler db;
 
     public static final float DEFAULT_MAX_SCALE = 3.0f;
     public static final float DEFAULT_MID_SCALE = 1.75f;
@@ -304,13 +307,13 @@ public class PDFView extends RelativeLayout {
                 super.onScaleEnd(detector);
                 String halaman = Integer.toString(getCurrentPage());
                 String aktivitas = "ZOOM";
-
                 String title = AppController.getInstance().getCurrentTitle();
 //              addActivityToServer(halaman,aktivitas);
 
                 if (getZoom() > prevZoom) {
                     Log.d(TAG, "onScaleEnd: zoom di halaman " + halaman + " title " + title);
                     prevZoom = getZoom();
+//                    db.addUserActivity(title,aktivitas,halaman);
                     ActivityUtils.addActivityToServer(title,halaman,aktivitas);
                 }
 

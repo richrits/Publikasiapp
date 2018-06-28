@@ -192,20 +192,20 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      * Menambahkan data publikasi ke database
       */
-    public void addPublikasi(Publikasi publikasi) {
+    public void addPublikasi(String title, String kat_no, String pub_no, String issn, String _abstract, String sch_date, String rl_date, String cover, String pdf, String size) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_PUBLIKASI_TITLE,publikasi.getTitle());
-        values.put(KEY_PUBLIKASI_KAT_NO,publikasi.getKat_no());
-        values.put(KEY_PUBLIKASI_PUB_NO,publikasi.getPub_no());
-        values.put(KEY_PUBLIKASI_ISSN,publikasi.getIssn());
-        values.put(KEY_PUBLIKASI_ABSTRACT,publikasi.get_abstract());
-        values.put(KEY_PUBLIKASI_SCH_DATE,publikasi.getSch_date());
-        values.put(KEY_PUBLIKASI_RL_DATE,publikasi.getRl_date());
-        values.put(KEY_PUBLIKASI_COVER,publikasi.getCover());
-        values.put(KEY_PUBLIKASI_PDF,publikasi.getPdf());
-        values.put(KEY_PUBLIKASI_SIZE,publikasi.getSize());
+        values.put(KEY_PUBLIKASI_TITLE,title);
+        values.put(KEY_PUBLIKASI_KAT_NO,kat_no);
+        values.put(KEY_PUBLIKASI_PUB_NO,pub_no);
+        values.put(KEY_PUBLIKASI_ISSN,issn);
+        values.put(KEY_PUBLIKASI_ABSTRACT,_abstract);
+        values.put(KEY_PUBLIKASI_SCH_DATE,sch_date);
+        values.put(KEY_PUBLIKASI_RL_DATE,rl_date);
+        values.put(KEY_PUBLIKASI_COVER,cover);
+        values.put(KEY_PUBLIKASI_PDF,pdf);
+        values.put(KEY_PUBLIKASI_SIZE,size);
 
         //insert row
         long id = db.insert(TABLE_PUBLIKASI,null,values);
@@ -298,15 +298,15 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     /**
      *     Menambahkan data aktivitas user ke database sqlite
      */
-    public void addUserActivity(String email, String publikasi_title, String event, Integer halaman_publikasi, String time_stamp) {
+    public void addUserActivity( String publikasi_title, String event, String halaman_publikasi) {
         SQLiteDatabase db = this.getWritableDatabase();
+        final String email = getUserDetails().get("email");
 
         ContentValues values = new ContentValues();
         values.put(KEY_EMAIL, email); // email
         values.put(KEY_PUBLIKASI_TITLE, publikasi_title); // title
         values.put(KEY_EVENT, event); // email
         values.put(KEY_HALAMAN_PUBLIKASI, halaman_publikasi); // email
-        values.put(KEY_TIME_STAMP, time_stamp); // email
 
         // Inserting Row
         long id = db.insert(TABLE_USER_ACTIVITY, null, values);
